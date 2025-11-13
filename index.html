@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>weather</title>
+  </head>
+  <body>
+    <div id="app"></div>
+     <body
+    class="bg-background-light dark:bg-background-dark font-display text-text-light-primary dark:text-text-dark-primary"
+  >
+    <div class="relative flex h-auto min-h-screen w-full flex-col">
+      <div class="layout-container flex h-full grow flex-col">
+        <div class="flex flex-1 justify-center p-4 sm:p-6 lg:p-8">
+          <div
+            class="layout-content-container flex w-full max-w-7xl flex-1 flex-col"
+          >
+            <!-- Top Nav Bar -->
+            <header
+              class="flex flex-wrap items-center justify-between gap-4 border-b border-solid border-border-light dark:border-border-dark pb-6"
+            >
+              <div
+                class="flex items-center gap-3 text-text-light-primary dark:text-text-dark-primary"
+              >
+                <div class="text-primary size-8">
+                  <span class="material-symbols-outlined !text-4xl">
+                    thermostat
+                  </span>
+                </div>
+                <h2
+                  class="text-2xl font-bold leading-tight tracking-[-0.015em]"
+                >
+                  WeatherApp
+                </h2>
+              </div>
+              <label class="flex flex-col min-w-40 h-11 w-full max-w-sm flex-1">
+                <div
+                  class="flex w-full flex-1 items-stretch rounded-lg h-full bg-slate-200/60 dark:bg-card-dark"
+                >
+                  <div
+                    class="text-text-light-secondary dark:text-text-dark-secondary flex items-center justify-center pl-4"
+                  >
+                    <span class="material-symbols-outlined"> search </span>
+                  </div>
+                  <input
+                    class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg focus:outline-0 focus:ring-0 border-none bg-transparent h-full placeholder:text-text-light-secondary dark:placeholder:text-text-dark-secondary px-4 pl-2 text-base font-normal leading-normal text-text-light-primary dark:text-text-dark-primary"
+                    placeholder="Enter your city"
+                    value=""
+                    id="cityvalue"
+                  />
+                    
+                </div>
+           
+              </label>
+                   <button class="flex cursor-pointer mr-[500px] items-center justify-center overflow-hidden rounded-lg h-11 bg-slate-200/60 dark:bg-card-dark text-text-light-primary dark:text-text-dark-primary gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-4" id="save">Save</button>
+              <button id="settings"
+                class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-11 bg-slate-200/60 dark:bg-card-dark text-text-light-primary dark:text-text-dark-primary gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-4"
+              >
+                <span class="material-symbols-outlined text-xl">
+                  settings
+                </span>
+              </button>
+            </header>
+            <main class="flex flex-col gap-8 py-8">
+              <!-- Page Heading -->
+              <div class="flex flex-wrap justify-between gap-3 px-4">
+                <div class="flex flex-col gap-1">
+                  <p
+                    class="text-4xl font-black leading-tight tracking-[-0.033em] text-text-light-primary dark:text-text-dark-primary"
+                    id="city"
+                  >
+                   
+                  </p>
+                  <p
+                  id="datetime"
+                    class="text-base font-normal leading-normal text-text-light-secondary dark:text-text-dark-secondary"
+                  >
+                   
+                  </p>
+                  <p id="currentCondition"></p>
+                </div>
+              </div>
+              <!-- Main Content Grid -->
+              <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+                <!-- Column 1: Current Weather Card -->
+                <div
+                  class="p-6 bg-card-light dark:bg-card-dark rounded-xl flex flex-col items-start justify-between lg:col-span-1"
+                >
+                  <div class="flex w-full items-start justify-between">
+                    <div class="flex flex-col gap-2">
+                      <p
+                        class="text-lg font-medium text-text-light-secondary dark:text-text-dark-secondary"
+                      >
+                        Current Weather
+                      </p>
+                      <p id="temp"
+                        class="text-5xl font-black leading-none tracking-[-0.033em] text-text-light-primary dark:text-text-dark-primary"
+                      >
+                        
+                      </p>
+                    </div>
+                    <div id="currentimage" class="text-primary size-24">
+                      
+                    </div>
+                  </div>
+                  <div class="flex flex-col gap-1 mt-4">
+                    <p id="feelslike"
+                      class="text-lg font-medium leading-normal text-text-light-primary dark:text-text-dark-primary"
+                    >
+                      Feels Like 75°
+                    </p>
+                    <p
+                      class="text-base font-normal leading-normal text-text-light-secondary dark:text-text-dark-secondary"
+                    >
+            
+                    </p>
+                  </div>
+                </div>
+                <!-- Column 2: Detailed Conditions -->
+                <div
+                  class="p-6 bg-card-light dark:bg-card-dark rounded-xl lg:col-span-2"
+                >
+                  <h2
+                    class="text-lg font-bold leading-tight tracking-[-0.015em] mb-4 text-text-light-primary dark:text-text-dark-primary"
+                  >
+                    Detailed Conditions
+                  </h2>
+                  <div class="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-4">
+                    <div class="flex items-start gap-3">
+                      <span class="material-symbols-outlined text-primary mt-1"
+                        >air</span
+                      >
+                      <div class="flex flex-col gap-0">
+                        <p
+                          class="text-sm font-normal leading-normal text-text-light-secondary dark:text-text-dark-secondary"
+                        >
+                          Wind Speed
+                        </p>
+                        <p
+                        id="windSpeed"
+                          class="text-base font-bold leading-normal text-text-light-primary dark:text-text-dark-primary"
+                        >
+                          10 mph
+                        </p>
+                      </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                      <span class="material-symbols-outlined text-primary mt-1"
+                        >humidity_percentage</span
+                      >
+                      <div class="flex flex-col gap-0">
+                        <p
+                      
+                          class="text-sm font-normal leading-normal text-text-light-secondary dark:text-text-dark-secondary"
+                        >
+                          Humidity
+                        </p>
+                        <p   id="humidity"
+                          class="text-base font-bold leading-normal text-text-light-primary dark:text-text-dark-primary"
+                        >
+                          65%
+                        </p>
+                      </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                      <span class="material-symbols-outlined text-primary mt-1"
+                        >wb_sunny</span
+                      >
+                      <div class="flex flex-col gap-0">
+                        <p
+                          class="text-sm font-normal leading-normal text-text-light-secondary dark:text-text-dark-secondary"
+                        >
+                          UV Index
+                        </p>
+                        <p id="uv"
+                          class="text-base font-bold leading-normal text-text-light-primary dark:text-text-dark-primary"
+                        >
+                          5 of 10
+                        </p>
+                      </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                      <span class="material-symbols-outlined text-primary mt-1"
+                        >visibility</span
+                      >
+                      <div class="flex flex-col gap-0">
+                        <p
+                          class="text-sm font-normal leading-normal text-text-light-secondary dark:text-text-dark-secondary"
+                        >
+                          Visibility
+                        </p>
+                        <p id="visibility"
+                          class="text-base font-bold leading-normal text-text-light-primary dark:text-text-dark-primary"
+                        >
+                          10 mi
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Hourly Forecast -->
+                  <div class="mt-4">
+                    <h2
+                      class="text-lg font-bold leading-tight tracking-[-0.015em] mb-4 text-text-light-primary dark:text-text-dark-primary"
+                    >
+                      Hourly Forecast
+                    </h2>
+                    <div class="flex  overflow-x-auto " id="Forecast">
+                    
+                   
+                   
+                
+               
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- 5-Day Forecast -->
+              <div class="flex flex-col">
+                <h2
+                  class="text-[20px] font-bold leading-tight tracking-[-0.015em] px-8 pb-3 pt-8 text-text-light-primary dark:text-text-dark-primary"
+                >
+                  3-Day Forecast
+                </h2>
+                <div
+                id="days"
+                  class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5"
+                >
+                 
+                
+                </div>
+              </div>
+            </main>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </body>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
