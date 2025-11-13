@@ -7,7 +7,7 @@
 async function getWeatherDataInaday(city,apikey) {
     try{
       
-        const url  =`http://api.weatherapi.com/v1/forecast.json?key=${apikey}&q=${city}&days=1&aqi=no&alerts=no`;
+        const url  =`https://api.weatherapi.com/v1/forecast.json?key=${apikey}&q=${city}&days=1&aqi=no&alerts=no`;
         const response = await fetch(url);
         const data = await response.json();
     

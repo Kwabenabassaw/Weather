@@ -4,7 +4,7 @@ let weatherbyday = [];
 async function fetchWeatherday(city, apikey) {
     try {
         // Note: Using HTTP here. If this is on an HTTPS site, the browser might block mixed content.
-        const url = `http://api.weatherapi.com/v1/forecast.json?key=${apikey}&q=${city}&days=6&aqi=no&alerts=no`;
+        const url = `https://api.weatherapi.com/v1/forecast.json?key=${apikey}&q=${city}&days=6&aqi=no&alerts=no`;
         const response = await fetch(url);
         
         if (!response.ok) {
