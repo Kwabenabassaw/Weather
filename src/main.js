@@ -1,8 +1,6 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import {fetchWeatherday} from './Weatherday.js'
-import {getWeatherDataInaday,weatherdatainday} from './fetch.js'
+
+import { fetchWeatherday } from './Weatherday.js';
+import { getWeatherDataInaday, weatherdatainday } from './fetch.js';
 const city  = document.getElementById("city");
 const btn = document.getElementById("settings");
 const datetime = document.getElementById("datetime");
@@ -49,13 +47,6 @@ let currentweather = [];
           },
         },
       };
-document.querySelector('#app').innerHTML = `
-
-
-
-
-  
-`
 
 function changeCity(){
   let cityname = cityvalue.value;
