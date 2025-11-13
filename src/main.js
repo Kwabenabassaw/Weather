@@ -64,7 +64,8 @@ let cityElement = document.getElementById("city");
 const apikey  = '03a05cb89e344fcb8ce164434252406'
 
 async function fetchCurrentWeather (cityname="Kumasi") {
-  const url = `https://api.weatherapi.com/v1/current.json?key=03a05cb89e344fcb8ce164434252406&q=${cityname}&aqi=no`
+const url = `https://api.weatherapi.com/v1/current.json?key=${apikey}&q=${cityname}&aqi=no`;
+  
     const response = await fetch(url);
     
     const data = await response.json();
